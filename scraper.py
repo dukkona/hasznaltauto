@@ -28,7 +28,7 @@ from lxml.etree import tostring
 import requests
 from BeautifulSoup import BeautifulSoup
 import re
-import scraperwiki
+#import scraperwiki
 
 
 #brand = "volkswagen"
@@ -133,6 +133,7 @@ for i in range(num_of_pages):
             act_kilometer = '0'
 
         data = {
+        'index': i,
         'link': act_link, 
         'year': act_year, 
         'price': act_price, 
@@ -142,5 +143,6 @@ for i in range(num_of_pages):
         'kobcenti': act_kobcenti,
         'loero: ': act_loero
         }
+
         #print(act_link, act_year, act_price, act_kilometer, act_felszereltseg, act_motor, act_kobcenti, act_loero)
-        scraperwiki.sqlite.save(unique_keys=['link'], data=data)
+        scraperwiki.sqlite.save(unique_keys=['index'], data=data)
