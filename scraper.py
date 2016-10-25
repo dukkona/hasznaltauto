@@ -31,17 +31,21 @@ import re
 import scraperwiki
 
 
-brand = "volkswagen"
-model = "MUFT5FYQ6QOR9FZQ6FSHWPZFSK600O9QY21UYHJQSK6R2ESPZ66SKRCFWYZKHIZLE44URK3K4MKIYZICE9OHZQJSYPTR8EMZIQE0TWRZWRT2JGSY4W4HJIQCQG3GLH4QQYJ3OEWTZJOPIZGQ6LWT6CC6OHRCEECWLZ2EE"
+#brand = "volkswagen"
+#model = "MUFT5FYQ6QOR9FZQ6FSHWPZFSK600O9QY21UYHJQSK6R2ESPZ66SKRCFWYZKHIZLE44URK3K4MKIYZICE9OHZQJSYPTR8EMZIQE0TWRZWRT2JGSY4W4HJIQCQG3GLH4QQYJ3OEWTZJOPIZGQ6LWT6CC6OHRCEECWLZ2EE/"
+#model = "golf"
 
 header = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0',}
 #url_base = "http://www.hasznaltauto.hu/auto/" + brand + "/" + model + "/"
-url_base = "http://www.hasznaltauto.hu/auto/" + "/" + model + "/"
+#url_base = "http://www.hasznaltauto.hu/talalatilista/auto/"  + model
+url_base = "http://www.hasznaltauto.hu/talalatilista/auto/MUFT5FYQ6QOR9FZQ6FSHWPZFSK600O9QY21UYHJQSK6R2ESPZ66SKRCFWYZKHIZLE44URK3K4MKIYZICE9OHZQJSYPTR8EMZIQE0TWRZWRT2JGSY4W4HJIQCQG3GLH4QQYJ3OEWTZJOPIZGQ6LWT6CC6OHRCEECWLZ2EE/"
+url_base_page = url_base + 'page1'
 
-page = requests.get(url_base, headers=header)
+page = requests.get(url_base_page, headers=header)
 tree = html.fromstring(page.content)
 
 num_of_pages = int(tree.xpath('//*[@class="oldalszam"][last()]')[0].text)
+
 
 database = []
 age = []
