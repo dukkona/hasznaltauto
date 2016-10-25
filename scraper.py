@@ -32,10 +32,11 @@ import scraperwiki
 
 
 brand = "volkswagen"
-model = "golf"
+model = "MUFT5FYQ6QOR9FZQ6FSHWPZFSK600O9QY21UYHJQSK6R2ESPZ66SKRCFWYZKHIZLE44URK3K4MKIYZICE9OHZQJSYPTR8EMZIQE0TWRZWRT2JGSY4W4HJIQCQG3GLH4QQYJ3OEWTZJOPIZGQ6LWT6CC6OHRCEECWLZ2EE"
 
 header = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0',}
-url_base = "http://www.hasznaltauto.hu/auto/" + brand + "/" + model + "/"
+#url_base = "http://www.hasznaltauto.hu/auto/" + brand + "/" + model + "/"
+url_base = "http://www.hasznaltauto.hu/auto/" + "/" + model + "/"
 
 page = requests.get(url_base, headers=header)
 tree = html.fromstring(page.content)
