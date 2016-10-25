@@ -28,7 +28,6 @@ from lxml.etree import tostring
 import requests
 from BeautifulSoup import BeautifulSoup
 import re
-import matplotlib.pyplot as plt
 import scraperwiki
 
 
