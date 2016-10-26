@@ -50,6 +50,7 @@ num_of_pages = int(tree.xpath('//*[@class="oldalszam"][last()]')[0].text)
 database = []
 age = []
 cost = []
+j = 0
 
 for i in range(num_of_pages):
     print i + 1, "/", num_of_pages
@@ -134,7 +135,7 @@ for i in range(num_of_pages):
             act_kilometer = '0'
 
         data = {
-        'index': i,
+        'index': j,
         'link': act_link, 
         'year': act_year, 
         'price': act_price, 
@@ -147,3 +148,4 @@ for i in range(num_of_pages):
 
         #print(act_link, act_year, act_price, act_kilometer, act_felszereltseg, act_motor, act_kobcenti, act_loero)
         scraperwiki.sqlite.save(unique_keys=['index'], data=data)
+        j+=1
