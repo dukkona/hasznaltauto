@@ -67,13 +67,13 @@ for i in range(num_of_pages):
     for idx, price in enumerate(prices):
         try:
             price_string = price[0].text[:-3]
-        except IndexError:
-            #print "Ar nelkul"
+        except Exception as inst:
+            print(inst)
             continue
         try:
             act_price = int(re.sub("\.", '', price_string))
-        except ValueError:
-            #print "Akcios"
+        except Exception as inst:
+            print(inst)
             continue
         
         soup = BeautifulSoup(tostring(links[idx]))
@@ -114,7 +114,8 @@ for i in range(num_of_pages):
                 act_loero = loero_tmp.replace('&#160;LE', '')
 
 
-        except IndexError:
+        except Exception as inst:
+            print(inst)
             act_year = '0'
             act_loero = '0'
             act_kobcenti = '0'
