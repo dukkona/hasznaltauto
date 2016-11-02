@@ -7,16 +7,10 @@ from BeautifulSoup import BeautifulSoup
 import re
 import scraperwiki
 import HTMLParser
-
-
-#brand = "volkswagen"
-#model = "MUFT5FYQ6QOR9FZQ6FSHWPZFSK600O9QY21UYHJQSK6R2ESPZ66SKRCFWYZKHIZLE44URK3K4MKIYZICE9OHZQJSYPTR8EMZIQE0TWRZWRT2JGSY4W4HJIQCQG3GLH4QQYJ3OEWTZJOPIZGQ6LWT6CC6OHRCEECWLZ2EE/"
-#model = "golf"
+import os
 
 header = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0',}
-#url_base = "http://www.hasznaltauto.hu/auto/" + brand + "/" + model + "/"
-#url_base = "http://www.hasznaltauto.hu/talalatilista/auto/"  + model
-url_base = "http://www.hasznaltauto.hu/talalatilista/auto/YHUQ5MD3JESDSFSF4D39LSA91EL26RGALFEDL0GUWFEU6YOUS0L347A2R6IASOF2AL6LZIE08ZIPOHJGJIUU8F8IDLGCWS677OKFEHQLL5WYLS5HUD5D4UPLHME919FR4R6OUFTZ37IPC0861Y15ZP7WC4ZJSP61HU19RL5T64Q24DJ6L8S/"
+url_base = os.environ['MORPH_URL']
 url_base_page = url_base + 'page1'
 
 page = requests.get(url_base_page, headers=header)
@@ -101,7 +95,7 @@ for i in range(num_of_pages):
             act_motor = 'nincs adat'
 
         try:
-            soup = BeautifulSoup(tostring(felszereltseg[idx]), )
+            soup = BeautifulSoup(tostring(felszereltseg[idx]))
             act_felszereltseg = HTMLParser.HTMLParser().unescape(soup.text[19:])
         except IndexError:
             act_felszereltseg = ''
